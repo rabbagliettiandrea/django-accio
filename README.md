@@ -1,4 +1,5 @@
 # django-accio
+![](http://i.imgur.com/Z39YAjm.png)
 
 What is Accio?
 --------------
