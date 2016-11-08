@@ -3,7 +3,6 @@
 from __future__ import unicode_literals, division
 from celery import Task
 from django.db import transaction
-from accio import celery_app
 
 
 class ManagedTask(Task):
@@ -13,6 +12,7 @@ class ManagedTask(Task):
     wait_secs = 0
 
     def apply(self, args=None, kwargs=None, link=None, link_error=None, **options):
+        from accio import celery_app
         if not celery_app.conf['ACCIO_CELERY_ENABLED']:
             return
         return super(ManagedTask, self).apply(
@@ -21,6 +21,7 @@ class ManagedTask(Task):
 
     def apply_async(self, args=None, kwargs=None, task_id=None, producer=None, link=None, link_error=None,
                     scheduled=False, countdown=wait_secs, **options):
+        from accio import celery_app
         if not celery_app.conf['ACCIO_CELERY_ENABLED']:
             return
         return super(ManagedTask, self).apply_async(
@@ -31,6 +32,7 @@ class ManagedTask(Task):
 
     def __call__(self, *args, **kwargs):
         if kwargs.pop('_force_run', self.force_run):
+            from accio import celery_app
             if celery_app.conf['ACCIO_ATOMIC']:
                 with transaction.atomic():
                     return super(ManagedTask, self).__call__(*args, **kwargs)

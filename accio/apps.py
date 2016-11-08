@@ -6,7 +6,7 @@ from django.apps import AppConfig
 
 class Config(AppConfig):
     name = 'accio'
-    verbose_name = 'django Accio'
+    verbose_name = 'Accio'
 
     def ready(self):
         import accio.signals  # noqa

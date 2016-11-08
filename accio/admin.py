@@ -23,7 +23,9 @@ class JobAdmin(ModelAdmin):
         return False
 
     def changelist_view(self, request, extra_context=None):
-        self.active_workers = app_or_default().control.inspect().active()
+        # TODO move me into detail
+        # self.active_workers = app_or_default().control.inspect().active()
+        self.active_workers = None
         return super(JobAdmin, self).changelist_view(request, extra_context=extra_context)
 
     def worker(self, obj):

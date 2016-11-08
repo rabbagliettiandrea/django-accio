@@ -13,7 +13,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         w = Worker(app_or_default())
         options = {
-            'loglevel': 'INFO',
+            'loglevel': 'DEBUG',
             'traceback': True
         }
         w.run(**options)
