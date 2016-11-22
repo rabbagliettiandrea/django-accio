@@ -1,5 +1,5 @@
 # django-accio
-![django-accio's logo](http://i.imgur.com/Z39YAjm.png)
+![django-accio's logo](https://github.com/silverfix/django-accio/raw/master/_assets/accio-logo.png)
 
 What is Accio?
 --------------
