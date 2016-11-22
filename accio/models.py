@@ -12,7 +12,7 @@ from django.utils import timezone
 class Job(models.Model):
     state = models.CharField(max_length=10, default=states.PENDING)
     task = models.CharField(max_length=256, db_index=True)
-    task_id = models.CharField(max_length=36, unique=True, db_index=True)
+    task_id = models.UUIDField(unique=True, db_index=True)
     category = models.CharField(max_length=50)
     args = models.TextField(blank=True)
     kwargs = models.TextField(blank=True)
