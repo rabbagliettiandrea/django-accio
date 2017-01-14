@@ -89,3 +89,4 @@ def failure_handler(sender, task_id, exception, traceback, einfo, *args, **kwarg
             raise ObjectDoesNotExist
         job_Locked.result = einfo.traceback
         job_Locked.save()
+

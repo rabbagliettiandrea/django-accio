@@ -20,16 +20,14 @@ celery_app.conf.update({
     'ACCIO_JOBS_MAX_COUNT': 1000,
 
     # celery settings
-    'BROKER_URL': REDIS_DB_URL,
-    'CELERY_RESULT_BACKEND': REDIS_DB_URL,
-    'CELERY_TASK_RESULT_EXPIRES': int(timedelta(hours=1).total_seconds()),
-
-    # Suggested celery settings
-    'CELERYD_CONCURRENCY': 4,
-    'CELERY_SEND_TASK_ERROR_EMAILS': True,
-    'CELERY_TASK_SERIALIZER': 'msgpack',
-    'CELERY_RESULT_SERIALIZER': 'msgpack',
-    'CELERY_ACCEPT_CONTENT': ['msgpack']
+    'broker_url': REDIS_DB_URL,
+    'result_backend': REDIS_DB_URL,
+    'result_expires': int(timedelta(hours=1).total_seconds()),
+    'worker_redirect_stdouts_level': 'INFO',
+    'worker_concurrency': 4,
+    'task_serializer': 'msgpack',
+    'result_serializer': 'msgpack',
+    'accept_content': ['msgpack']
 })
 celery_app.conf.update(**vars(django.conf.settings._wrapped))
 celery_app.autodiscover_tasks()

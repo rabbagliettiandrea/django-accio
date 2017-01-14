@@ -7,13 +7,12 @@ from django.core.management import BaseCommand
 
 
 class Command(BaseCommand):
-
     help = 'Start celery beat'
 
     def handle(self, *args, **options):
         b = Beat(app_or_default())
         options = {
-            'loglevel': 'INFO',
+            'loglevel': 'DEBUG',
             'traceback': True
         }
         b.run(**options)

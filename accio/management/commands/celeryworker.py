@@ -7,7 +7,6 @@ from django.core.management import BaseCommand
 
 
 class Command(BaseCommand):
-
     help = 'Start celery worker'
 
     def handle(self, *args, **options):
