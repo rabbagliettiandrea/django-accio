@@ -25,9 +25,9 @@ celery_app.conf.update({
     'result_expires': int(timedelta(hours=1).total_seconds()),
     'worker_redirect_stdouts_level': 'INFO',
     'worker_concurrency': 4,
-    'task_serializer': 'msgpack',
-    'result_serializer': 'msgpack',
-    'accept_content': ['msgpack']
+    'task_serializer': 'json',
+    'result_serializer': 'json',
+    'accept_content': ['json']
 })
 celery_app.conf.update(**vars(django.conf.settings._wrapped))
 celery_app.autodiscover_tasks()
