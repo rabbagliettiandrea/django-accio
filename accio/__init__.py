@@ -27,7 +27,8 @@ celery_app.conf.update({
     'worker_concurrency': 4,
     'task_serializer': 'json',
     'result_serializer': 'json',
-    'accept_content': ['json']
+    'accept_content': ['json'],
+    'worker_prefetch_multiplier': 1
 })
 celery_app.conf.update(**vars(django.conf.settings._wrapped))
 celery_app.autodiscover_tasks()
